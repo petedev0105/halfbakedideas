@@ -5,7 +5,7 @@ const Post = () => {
 
             <div className="bg-white flex items-center shadow-sm m-2 rounded-lg shadow-gray-100  p-4">
                 <div className="flex flex-col mx-2 md:w-8/12" >
-                    <h2 className="md:text-xl text-md font-medium text-slate-800">A website that shows list of beginner friendly open source projects</h2>
+                    <h2 className=" md:text-lg text-md font-medium text-slate-800">A website that shows list of beginner friendly open source projects</h2>
                     <div className="flex flex-wrap md:text-sm text-xs mt-2 text-gray-500 ">
                         <span className="">By Rutik w</span>
                         <span className="md:ml-10 mx-2">2 hours ago</span>
