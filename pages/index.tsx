@@ -21,9 +21,9 @@ const Home = () => {
 
         <div className="md:w-1/4  md:sticky top-14 mx-4 h-max ">
 
-          <div className="border shadow-sm shadow-gray-50 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">✨ Latest</div>
-          <div className="border border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">🙋 Somebody make this</div>
-          <div className="border border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">💸 Take my money</div>
+          <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">✨ Latest</div>
+          <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">🙋 Somebody make this</div>
+          <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">💸 Take my money</div>
 
         </div>
 
@@ -33,7 +33,7 @@ const Home = () => {
           <Post />
           <Post />
           <Post />
-                    <Post />
+          <Post />
           <Post />
           <Post />
           <Post />

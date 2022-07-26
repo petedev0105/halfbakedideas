@@ -15,13 +15,13 @@ const Post = () => {
                 </div>
 
                 <div className=" flex md:flex-row flex-col">
-                    <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                        <button className=" md:text-4xl text-2xl">🙋</button>
+                    <div className="flex group cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
+                        <button className=" md:text-3xl text-2xl">🙋</button>
                         <span className="font-semibold">23</span>
                     </div>
 
                     <div className="flex cursor-pointer  m-2 transform duration-200 w-20 border shadow-sm shadow-gray-50 border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                        <button className=" md:text-4xl text-2xl ">💸</button>
+                        <button className=" md:text-3xl text-2xl ">💸</button>
                         <span className="font-semibold">8</span>
                     </div>
 
