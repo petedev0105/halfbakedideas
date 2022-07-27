@@ -3,7 +3,7 @@ import React from 'react'
 import Post from '../components/Post'
 import Link from "next/link";
 import Select from 'react-select'
-import { categoryOptions } from '../utils/utils'
+import { categoryOptions, style, theme } from '../utils/utils'
 
 const Home = () => {
   return (
@@ -35,10 +35,16 @@ const Home = () => {
 
           <div className="mt-4">
 
-          
-          <span className="text-sm mx-3 font-semibold text-slate-600">Filter by Category</span>
-          <Select options={categoryOptions} className=" font-semibold capitalize outline-none rounded-lg text-md mx-2 border-none my-2" />
-</div>
+
+            <span className="text-sm mx-3 font-semibold text-slate-600">Filter by Category</span>
+            <Select
+              options={categoryOptions}
+              styles={style}
+              theme={theme}
+
+              className=" font-semibold capitalize outline-none rounded-lg text-md mx-2 border-none my-2"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col overflow-y-auto  md:w-7/12">

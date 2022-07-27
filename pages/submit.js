@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import ideaLogo from '../assets/images/idea-logo.png'
 import Select from 'react-select'
-import { categoryOptions } from '../utils/utils'
+import { categoryOptions, style, theme } from '../utils/utils'
 
 const Submit = () => {
     return (
@@ -21,7 +21,12 @@ const Submit = () => {
                         className="h-28 outline-none p-2 rounded-lg mx-auto text-lg border my-2 md:w-10/12 w-full"
                     />
 
-                    <Select options={categoryOptions} className=" font-semibold capitalize outline-none rounded-lg text-lg md:w-10/12 mx-auto my-2" />
+                    <Select
+                        options={categoryOptions}
+                        styles={style}
+                        theme={theme}
+
+                        className=" font-semibold border capitalize outline-none rounded-lg text-lg md:w-10/12 mx-auto my-2" />
 
                     <button className="text-lg flex bg-slate-700 hover:scale-105 duration-300 hover:bg-slate-800 mx-auto w-max p-2 px-6 rounded-lg text-white font-semibold">Submit</button>
 
