@@ -1,7 +1,13 @@
 import React from 'react';
-const Post = () => {
+import { useSession } from 'next-auth/react'
+
+const Post = ({ setIsOpen }) => {
+    const { data: session, status } = useSession()
 
     const handlePostReactions = (reactionType) => {
+        if (!session) {
+            setIsOpen(true)
+        }
 
         console.log(reactionType)
 
