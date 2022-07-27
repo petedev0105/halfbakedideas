@@ -1,10 +1,11 @@
 import Head from 'next/head'
-import React from 'react'
+import React,{ Fragment, useState } from 'react'
 import Post from '../components/Post'
 import Link from "next/link";
 import Select from 'react-select'
 import { categoryOptions, style, theme } from '../utils/utils'
 import { useSession } from 'next-auth/react'
+import { Dialog, Transition } from '@headlessui/react'
 
 const Home = () => {
 
