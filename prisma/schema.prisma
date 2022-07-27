@@ -27,6 +27,8 @@ model User {
     role          String?   @default("user")
     accounts      Account[]
     sessions      Session[]
+    posts         Post[]
+
 }
 
 model Account {
@@ -62,4 +64,16 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  created     DateTime @default(now())
+  userToken   String @db.VarChar(255)
+  userName    String?
+  title       String @db.VarChar(500)
+  category    String?
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  String?
+  @@index([userToken])
 }
