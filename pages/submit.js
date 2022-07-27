@@ -1,9 +1,26 @@
+import React, { useEffect } from 'react';
+
 import Image from 'next/image'
 import ideaLogo from '../assets/images/idea-logo.png'
 import Select from 'react-select'
 import { categoryOptions, style, theme } from '../utils/utils'
+import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
+
 
 const Submit = () => {
+    
+    const { data: session, status } = useSession()
+
+    const router = useRouter()
+    useEffect(() => {
+        if (!session) {
+            router.push('/')
+        }
+    }, [session])
+
+
+
     return (
         <div className="p-4">
 
@@ -25,6 +42,7 @@ const Submit = () => {
                         options={categoryOptions}
                         styles={style}
                         theme={theme}
+                        instanceId='submit'
 
                         className=" font-semibold border capitalize outline-none rounded-lg text-lg md:w-10/12 mx-auto my-2" />
 

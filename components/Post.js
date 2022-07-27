@@ -1,5 +1,13 @@
 import React from 'react';
 const Post = () => {
+
+    const handlePostReactions = (reactionType) => {
+
+        console.log(reactionType)
+
+    }
+
+
     return (
         <div>
 
@@ -16,29 +24,42 @@ const Post = () => {
 
                 <div className=" flex md:flex-row flex-col">
 
-                    <div className="group">
-                        <div class="relative group-hover:flex hidden">
-                            <div class="bg-slate-700 absolute w-max text-white text-xs rounded py-1 px-4 right-0 bottom-full">
-                                I would use it
-                                <svg class="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon class="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
+                    <div
+                        onClick={() => handlePostReactions('use')}
+                    >
+                        <div className="group">
+
+                            <div className="relative group-hover:flex hidden">
+                                <div className="bg-slate-700 absolute w-max text-white text-xs rounded py-1 px-4 right-0 bottom-full">
+                                    I would use it
+                                    <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
+                                </div>
+                            </div>
+                            <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
+                                <button className=" md:text-3xl text-2xl">🙋</button>
+                                <span className="font-semibold">23</span>
                             </div>
                         </div>
-                        <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                            <button className=" md:text-3xl text-2xl">🙋</button>
-                            <span className="font-semibold">23</span>
-                        </div>
+
                     </div>
 
-                    <div className="group">
-                        <div class="relative group-hover:flex hidden">
-                            <div class="bg-slate-700 absolute w-max text-white text-xs rounded py-1 px-4 right-0 bottom-full">
-                                Take my money
-                                <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon class="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
+                    <div
+                        onClick={() => handlePostReactions('pay')}
+                    >
+                        <div className="group">
+
+
+                            <div className="relative group-hover:flex hidden">
+                                <div className="bg-slate-700 absolute w-max text-white text-xs rounded py-1 px-4 right-0 bottom-full">
+                                    Take my money
+                                    <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                            <button className=" md:text-3xl text-2xl">💸</button>
-                            <span className="font-semibold">17</span>
+                            <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
+                                <button className=" md:text-3xl text-2xl">💸</button>
+                                <span className="font-semibold">17</span>
+                            </div>
+
                         </div>
                     </div>
 
