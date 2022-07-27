@@ -8,7 +8,7 @@ import Header from '../components/Header';
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <SessionProvider session={pageProps.session}>
-      <div className="flex flex-col bg-gray-50">
+      <div className="flex flex-col bg-slate-50">
         <Header />
         <Component {...pageProps} />
       </div>

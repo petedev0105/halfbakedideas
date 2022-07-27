@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react'
 import Header from '../components/Header'
 import Post from '../components/Post'
@@ -31,7 +30,7 @@ const Home = () => {
 
 
           <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">✨ Latest</div>
-          <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">🙋 Somebody make this</div>
+          <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">🙋 I would use this</div>
           <div className="border shadow-sm shadow-gray-100 border-gray-50 m-2 p-2 font-semibold rounded-lg text-md bg-white">💸 Take my money</div>
 
         </div>
