@@ -11,7 +11,10 @@ const Header = () => {
     return (
 
         <div className="md:px-52 p-2 flex items-center bg-white top-0 sticky z-10">
-            <h1 className="md:text-xl text-md font-semibold">💡 half baked ideas</h1>
+            <Link href="/" >
+                            <h1 className="hover:text-pink-300 cursor-pointer md:text-xl text-md font-semibold">💡 half baked ideas</h1>
+
+            </Link>
 
 
             <div className="ml-auto mr-2">
