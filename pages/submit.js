@@ -28,13 +28,13 @@ const Submit = () => {
         e.preventDefault();
 
         try {
-            const body = { title, category: "productivity" };
-           
-          await fetch('/api/post', {
+            const body = { title, category: category.value };
+
+            await fetch('/api/post', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
-         });
+            });
 
             await router.push('/');
         } catch (error) {

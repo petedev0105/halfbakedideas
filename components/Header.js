@@ -7,7 +7,7 @@ import {
 
 const Header = () => {
     const { data: session, status } = useSession();
-
+console.log(session)
     return (
 
         <div className="md:px-52 p-2 flex items-center bg-white top-0 sticky z-10">

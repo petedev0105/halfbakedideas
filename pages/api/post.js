@@ -7,11 +7,12 @@ export default async function handle(req, res) {
 
   const { title, category } = req.body;
   const session = await getSession({ req });
-  
-    const result = await prisma.post.create({
+
+  const result = await prisma.post.create({
     data: {
       title: title,
       category: category,
+      userName: session?.user?.name,
       author: { connect: { email: session?.user?.email } },
     },
   });
