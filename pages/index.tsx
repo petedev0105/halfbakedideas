@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Post from '../components/Post'
 import Link from "next/link";
 import Select from 'react-select'
@@ -8,11 +8,24 @@ import { useSession, signIn } from 'next-auth/react'
 import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import ideaLogo from '../assets/images/idea-logo.png'
+import useSWR from 'swr'
+
+
 
 const Home = () => {
 
   const { data: session, status } = useSession()
   const [isOpen, setIsOpen] = useState(false)
+
+  const fetcher = (...args) => fetch(...args).then(res =>res.json())
+
+  const { data, error } = useSWR('/api/posts', fetcher)
+  if (error) return <div>An error occured.</div>
+  if (!data) return <div>Loading ...</div>
+
+  console.log(data)
+
+
 
   return (
     <div className="">
@@ -127,12 +140,11 @@ const Home = () => {
 
 
         <div className="flex flex-col overflow-y-auto  md:w-7/12">
+          {data && data.map(post => {
+            return <Post setIsOpen={setIsOpen} key={post.id} post={post} />
 
-          <Post setIsOpen={setIsOpen} />
-          <Post setIsOpen={setIsOpen} />
-          <Post setIsOpen={setIsOpen} />
-          <Post setIsOpen={setIsOpen} />
-          <Post setIsOpen={setIsOpen} />
+          })}
+
 
         </div>
       </div>
@@ -143,4 +155,23 @@ const Home = () => {
   )
 }
 
+
+// export const getStaticProps = async () => {
+//   const posts = await prisma.post.findMany({
+//     include: {
+//       author: {
+//         select: { name: true }
+//       }
+//     }
+//   });
+
+
+//   return {
+//     props: { posts},
+//   };
+// };
+
+
+
 export default Home
+
