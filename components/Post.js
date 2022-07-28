@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSession } from 'next-auth/react'
+import { formatDistanceToNow } from 'date-fns'
 
 const Post = ({ setIsOpen, post }) => {
     const { data: session, status } = useSession()
-    const { authorId, title, category, userName } = post
+    const { authorId, title, category, userName, created } = post
 
 
     const handlePostReactions = (reactionType) => {
@@ -21,9 +22,10 @@ const Post = ({ setIsOpen, post }) => {
                 <div className="flex flex-col mx-2 md:w-8/12" >
                     <h2 className=" md:text-lg text-md font-medium text-slate-800">{title}</h2>
                     <div className="flex flex-wrap md:text-sm text-xs mt-2 text-gray-500 ">
-                        <span className="">{userName}</span>
-                        <span className="md:ml-10 mx-2">2 hours ago</span>
-                        <span className="md:ml-10 mx-2">{category}</span>
+                        <span className="">By {userName}</span>
+                        <span className="md:ml-8 mx-2  ">{category}</span>
+
+                        <span className="md:ml-8 mx-2">{(formatDistanceToNow(new Date(created))).replace('about', '')} ago</span>
 
                     </div>
                 </div>
