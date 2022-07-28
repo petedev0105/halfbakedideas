@@ -69,11 +69,10 @@ model VerificationToken {
 model Post {
   id          String   @id @default(cuid())
   created     DateTime @default(now())
-  userToken   String @db.VarChar(255)
   userName    String?
-  title       String @db.VarChar(500)
+  title       String?
   category    String?
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  String?
-  @@index([userToken])
+  @@index([authorId])
 }
