@@ -2,23 +2,43 @@ import React from 'react';
 import { useSession } from 'next-auth/react'
 import { formatDistanceToNow } from 'date-fns'
 
-const Post = ({ setIsOpen, post }) => {
-    const { data: session, status } = useSession()
-    const { authorId, title, category, userName, created } = post
+const Post = ({ setIsOpen, post, postId }) => {
+   
+    const { data: session, status,userId } = useSession()
+
+    const { authorId, title, category, userName, created, likedByUsers } = post
+
+// console.log(session.userId,"uuusrrr")
 
 
-    const handlePostReactions = (reactionType) => {
+    const handlePostReactions = async () => {
         if (!session) {
             setIsOpen(true)
         }
-        console.log(reactionType)
+
+        try {
+            const bodyData = { postId };
+
+            await fetch('/api/like', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bodyData),
+            });
+
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 
+  const isLiked = likedByUsers.some(el => el.id == session?.userId);
+console.log(isLiked,"status")
+   
 
     return (
         <div>
 
-            <div className="bg-white flex items-center shadow-sm m-2 rounded-lg shadow-gray-100  p-4">
+            <div className={` bg-white flex items-center shadow-sm m-2 rounded-lg shadow-gray-100  p-4`}>
                 <div className="flex flex-col mx-2 md:w-8/12" >
                     <h2 className=" md:text-lg text-md font-medium text-slate-800">{title}</h2>
                     <div className="flex flex-wrap md:text-sm text-xs mt-2 text-gray-500 ">
@@ -32,8 +52,8 @@ const Post = ({ setIsOpen, post }) => {
 
                 <div className=" flex md:flex-row flex-col">
 
-                    <div
-                        onClick={() => handlePostReactions('use')}
+                    <button
+                        onClick={handlePostReactions}
                     >
                         <div className="group">
 
@@ -43,16 +63,17 @@ const Post = ({ setIsOpen, post }) => {
                                     <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
                                 </div>
                             </div>
-                            <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                                <button className=" md:text-3xl text-2xl">🙋</button>
-                                <span className="font-semibold">23</span>
+                            <div className={`${isLiked?'border-pink-100 text-pink-400 border':'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20 h-20 items-center shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
+                                <span className=" md:text-3xl text-2xl">🙋</span>
+                                <span className=" font-semibold">{likedByUsers.length}</span>
+
                             </div>
                         </div>
 
-                    </div>
+                    </button>
 
-                    <div
-                        onClick={() => handlePostReactions('pay')}
+                    <button
+                        onClick={handlePostReactions}
                     >
                         <div className="group">
 
@@ -64,12 +85,12 @@ const Post = ({ setIsOpen, post }) => {
                                 </div>
                             </div>
                             <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
-                                <button className=" md:text-3xl text-2xl">💸</button>
+                                <span className=" md:text-3xl text-2xl">💸</span>
                                 <span className="font-semibold">17</span>
                             </div>
 
                         </div>
-                    </div>
+                    </button>
 
                 </div>
             </div>

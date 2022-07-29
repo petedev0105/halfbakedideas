@@ -2,48 +2,45 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
-
 }
 
-
 model User {
-    id            String    @id @default(cuid())
-    createdAt     DateTime  @default(now())
-    updatedAt     DateTime  @updatedAt
-    name          String?
-    email         String?   @unique
-    password      String?
-    emailVerified DateTime?
-    image         String?
-    role          String?   @default("user")
-    accounts      Account[]
-    sessions      Session[]
-    posts         Post[]
-
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  name          String?
+  email         String?   @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  role          String?   @default("user")
+  accounts      Account[]
+  sessions      Session[]
+  posts         Post[]
+   likedPosts    Post[]    @relation("likedPosts")
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -67,12 +64,24 @@ model VerificationToken {
 }
 
 model Post {
-  id          String   @id @default(cuid())
-  created     DateTime @default(now())
-  userName    String?
-  title       String?
-  category    String?
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  String?
+  id       String   @id @default(cuid())
+  created  DateTime @default(now())
+  userName String?
+  title    String?
+  category String?
+  author   User?    @relation(fields: [authorId], references: [id])
+  authorId String?
+
+  likedByUsers User[]    @relation("likedPosts")
   @@index([authorId])
 }
+
+// model Like {
+//   id        String   @id @default(cuid())
+//   created   DateTime @default(now())
+//   userEmail String?
+//   postId    String
+//   Post      Post     @relation(fields: [postId], references: [id])
+//     @@unique([postId, userEmail])
+
+// }

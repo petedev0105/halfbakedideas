@@ -141,7 +141,7 @@ const Home = () => {
 
         <div className="flex flex-col overflow-y-auto  md:w-7/12">
           {data && data.map(post => {
-            return <Post setIsOpen={setIsOpen} key={post.id} post={post} />
+            return <Post setIsOpen={setIsOpen} key={post.id} postId={post.id} post={post} />
 
           })}
 
