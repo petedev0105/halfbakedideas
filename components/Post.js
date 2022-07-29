@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react'
 import { formatDistanceToNow } from 'date-fns'
 
 const Post = ({ setIsOpen, post, postId }) => {
-   
-    const { data: session, status,userId } = useSession()
+    const [data, setData] = useState(post)
+    const { data: session, status, userId } = useSession()
 
-    const { authorId, title, category, userName, created, likedByUsers } = post
-
-// console.log(session.userId,"uuusrrr")
+    const { authorId, title, category, userName, created, likedByUsers, supportedByUsers } = data
 
 
-    const handlePostReactions = async () => {
+    const handlePostReactions = async (reaction) => {
         if (!session) {
             setIsOpen(true)
         }
@@ -19,11 +17,15 @@ const Post = ({ setIsOpen, post, postId }) => {
         try {
             const bodyData = { postId };
 
-            await fetch('/api/like', {
+            const updatedPost = await fetch(`/api/${reaction}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(bodyData),
             });
+            const newData = await updatedPost.json()
+
+            console.log(newData, 'upud')
+            setData(newData)
 
 
         } catch (error) {
@@ -31,9 +33,8 @@ const Post = ({ setIsOpen, post, postId }) => {
         }
     }
 
-  const isLiked = likedByUsers.some(el => el.id == session?.userId);
-console.log(isLiked,"status")
-   
+    const isLiked = likedByUsers.some(el => el.id == session?.userId);
+    const isSupported = supportedByUsers.some(el => el.id == session?.userId);
 
     return (
         <div>
@@ -53,7 +54,7 @@ console.log(isLiked,"status")
                 <div className=" flex md:flex-row flex-col">
 
                     <button
-                        onClick={handlePostReactions}
+                        onClick={() => handlePostReactions('like')}
                     >
                         <div className="group">
 
@@ -63,7 +64,7 @@ console.log(isLiked,"status")
                                     <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
                                 </div>
                             </div>
-                            <div className={`${isLiked?'border-pink-100 text-pink-400 border':'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20 h-20 items-center shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
+                            <div className={`${isLiked ? 'border-pink-200 text-pink-400 border' : 'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20 h-20 items-center shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
                                 <span className=" md:text-3xl text-2xl">🙋</span>
                                 <span className=" font-semibold">{likedByUsers.length}</span>
 
@@ -73,7 +74,7 @@ console.log(isLiked,"status")
                     </button>
 
                     <button
-                        onClick={handlePostReactions}
+                        onClick={() => handlePostReactions('support')}
                     >
                         <div className="group">
 
@@ -84,9 +85,9 @@ console.log(isLiked,"status")
                                     <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
                                 </div>
                             </div>
-                            <div className="flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center">
+                            <div className={`${isSupported ? 'border-pink-200 text-pink-400 border' : 'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
                                 <span className=" md:text-3xl text-2xl">💸</span>
-                                <span className="font-semibold">17</span>
+                                <span className="font-semibold">{supportedByUsers.length}</span>
                             </div>
 
                         </div>

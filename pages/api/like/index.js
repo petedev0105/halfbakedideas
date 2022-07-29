@@ -14,6 +14,20 @@ export default async function like(req, res) {
         connect: { id: userId },
       },
     },
+    include: {
+      likedByUsers: {
+        select: {
+          id: true,
+        },
+      },
+      supportedByUsers: {
+        select: {
+          id: true,
+        },
+      }
+
+    },
+
   });
   res.json(result)
 }

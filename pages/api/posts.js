@@ -5,12 +5,17 @@ export default async function handle(req, res) {
   const posts = await prisma.post.findMany({
     include: {
       likedByUsers: {
-      select: {
-    id: true,
-  },
-      } 
-     
-  },
+        select: {
+          id: true,
+        },
+      },
+      supportedByUsers: {
+        select: {
+          id: true,
+        },
+      }
+
+    },
   })
   res.json(posts)
 }
