@@ -51,7 +51,7 @@ const LoginPopup = ({ showLoginPopup, setShowLoginPopup }) => {
                                         <h2 className="text-2xl font-semibold text-center">Signup to vote</h2>
                                         <p className="text-md py-2 font-semibold text-center text-slate-700">It takes less than 10 seconds!</p>
                                         <p className="text-sm py-2 text-center text-slate-500">
-                                            Once logged in, you can submit your ideas as well as react to the other ideas you like.
+                                            Once logged in, you can submit your ideas as well as vote for your favorite ideas.
                                         </p>
 
 

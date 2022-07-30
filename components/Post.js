@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react'
 import { formatDistanceToNow } from 'date-fns'
+import Link from 'next/link';
 
 const Post = ({ setShowLoginPopup, post, postId }) => {
     const [data, setData] = useState(post)
@@ -45,7 +46,12 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
                 <div className="flex flex-col mx-2 md:w-8/12" >
                     <h2 className=" md:text-lg text-md font-medium text-slate-800">{title}</h2>
                     <div className="flex flex-wrap md:text-sm text-xs mt-2 text-gray-500 ">
-                        <span className="">By {userName}</span>
+                        <span className="">By 
+                            
+                            <Link href={`/user/${authorId}`} >
+                                <span className="mx-1 cursor-pointer hover:text-pink-400">{userName}</span>
+                            </Link>
+                        </span>
                         <span className="md:ml-8 mx-2  ">{category}</span>
 
                         <span className="md:ml-8 mx-2">{(formatDistanceToNow(new Date(created))).replace('about', '')} ago</span>
@@ -62,7 +68,7 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
 
                             <div className="relative group-hover:flex hidden">
                                 <div className="bg-slate-700 absolute w-max text-white text-xs rounded py-1 px-4 right-0 bottom-full">
-                                    I would use it
+                                    I would use this
                                     <svg className="absolute text-slate-700 h-2 w-full left-0 top-full" viewBox="0 0 255 255" ><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
                                 </div>
                             </div>

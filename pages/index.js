@@ -115,8 +115,9 @@ const Home = () => {
               :
               <div></div>
             }
+              <span className="text-sm  mx-3 font-semibold text-slate-600">Sort by</span>
 
-            <Tab.List as="div" className="flex flex-col w-60 mx-auto">
+            <Tab.List as="div" className="flex my-1 flex-col w-60 mx-auto">
 
 
               <Tab as="button" key="latest" className="text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
