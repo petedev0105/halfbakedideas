@@ -4,9 +4,13 @@ import { formatDistanceToNow } from 'date-fns'
 
 const Post = ({ setIsOpen, post, postId }) => {
     const [data, setData] = useState(post)
-    const { data: session, status, userId } = useSession()
+    const { data: session, status} = useSession()
 
     const { authorId, title, category, userName, created, likedByUsers, supportedByUsers } = data
+
+    const isLiked = likedByUsers.some(el => el.id == session?.userId);
+    const isSupported = supportedByUsers.some(el => el.id == session?.userId);
+
 
 
     const handlePostReactions = async (reaction) => {
@@ -24,7 +28,7 @@ const Post = ({ setIsOpen, post, postId }) => {
             });
             const newData = await updatedPost.json()
 
-            console.log(newData, 'upud')
+            console.log(newData, 'post updated success')
             setData(newData)
 
 
@@ -33,8 +37,6 @@ const Post = ({ setIsOpen, post, postId }) => {
         }
     }
 
-    const isLiked = likedByUsers.some(el => el.id == session?.userId);
-    const isSupported = supportedByUsers.some(el => el.id == session?.userId);
 
     return (
         <div>
