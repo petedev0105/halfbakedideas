@@ -25,7 +25,7 @@ const Footer = () => {
 
 
             </div>
-            <a href="https://planetscale.com" target="_blank" rel="noreferrer" className="flex justify-center text-xs text-gray-400 hover:text-pink-400 mx-auto text-center">
+            <a href="https://twitter.com/WankhadeRutik" target="_blank" rel="noreferrer" className="flex justify-center text-xs text-gray-400 hover:text-pink-400 mx-auto text-center">
                 By Rutik Wankhade
             </a>
         </div>

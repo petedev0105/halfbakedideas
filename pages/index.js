@@ -115,20 +115,20 @@ const Home = () => {
               :
               <div></div>
             }
-              <span className="text-sm  mx-3 font-semibold text-slate-600">Sort by</span>
+              <span className="text-sm w-40  mx-3 font-semibold text-slate-600">Sort by</span>
 
             <Tab.List as="div" className="flex my-1 flex-col w-60 mx-auto">
 
 
-              <Tab as="button" key="latest" className="text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
+              <Tab as="button" key="latest" className="focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
                 ✨ Latest
               </Tab>
 
-              <Tab key="mostLiked" className=" text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
+              <Tab key="mostLiked" className="focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
                 🙋 I would use this
               </Tab>
 
-              <Tab as="button" key="mostSupported" className="text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
+              <Tab as="button" key="mostSupported" className="focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
                 💸 Take my money
               </Tab>
 
@@ -153,7 +153,7 @@ const Home = () => {
           </div>
 
 
-          <Tab.Panels as="div" className="border border-slate-100 rounded-xl ">
+          <Tab.Panels as="div" className="border-l border-slate-100 rounded-xl ">
 
             <Tab.Panel key="latest">
               <div className=" flex flex-col overflow-y-auto ">

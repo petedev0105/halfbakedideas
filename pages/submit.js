@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Image from 'next/image'
-import ideaLogo from '../assets/images/idea-logo.png'
+import ideaLogo from '../assets/images/idea-logo.webp'
 import Select from 'react-select'
 import { categoryOptions, style, theme } from '../utils/utils'
 import { useRouter } from 'next/router'
