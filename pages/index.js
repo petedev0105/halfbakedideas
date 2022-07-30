@@ -7,6 +7,7 @@ import { categoryOptions, style, theme } from '../utils/utils'
 import { useSession, signIn } from 'next-auth/react'
 import LoginPopup from '../components/LoginPopup'
 import useSWR from 'swr'
+import Footer from '../components/Footer'
 
 import { Tab } from '@headlessui/react'
 
@@ -132,7 +133,7 @@ const Home = () => {
 
             </Tab.List>
 
-            <div className="mt-4">
+            <div className="my-4 w-60 mx-auto">
               <span className="text-sm mx-3 font-semibold text-slate-600">Filter by Category</span>
               <Select
 
@@ -142,9 +143,11 @@ const Home = () => {
                 styles={style}
                 theme={theme}
                 instanceId='filter'
-                className=" font-semibold capitalize outline-none rounded-lg text-md mx-2 border-none my-2"
+                className=" font-semibold capitalize outline-none rounded-lg text-md mx-1 border-none my-2"
               />
             </div>
+
+            <Footer/>
 
           </div>
 

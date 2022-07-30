@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Image from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
 
-import ideaLogo from '../assets/images/idea-logo.png'
+import ideaLogo from '../assets/images/idea-logo.webp'
 
 const LoginPopup = ({ showLoginPopup, setShowLoginPopup }) => {
 
