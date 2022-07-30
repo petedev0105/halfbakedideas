@@ -1,5 +1,5 @@
 import prisma from '../../lib/prisma';
-// Fetch all posts (in /pages/api/posts.ts)
+// Fetch all posts 
 
 export default async function handle(req, res) {
   const posts = await prisma.post.findMany({
