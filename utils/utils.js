@@ -1,6 +1,8 @@
 //categories 
 
 const categoryOptions = [
+        { value: 'all', label: 'all' },
+
     { value: 'social', label: 'social' },
     { value: 'tech', label: 'tech' },
     { value: 'productivity', label: 'productivity' },

@@ -16,6 +16,8 @@ const Home = () => {
 
   const { data: session, status } = useSession()
   const [showLoginPopup, setShowLoginPopup] = useState(false)
+  const [category, setCategory] = useState({ label: "all", value: "all" })
+
 
   const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -120,12 +122,12 @@ const Home = () => {
                 ✨ Latest
               </Tab>
 
-              <Tab key="mostLiked"  className=" text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
-               🙋 I would use this
+              <Tab key="mostLiked" className=" text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
+                🙋 I would use this
               </Tab>
 
-              <Tab as="button"  key="mostSupported" className="text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
-                  💸 Take my money
+              <Tab as="button" key="mostSupported" className="text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 font-semibold rounded-lg text-md bg-white">
+                💸 Take my money
               </Tab>
 
             </Tab.List>
@@ -133,6 +135,9 @@ const Home = () => {
             <div className="mt-4">
               <span className="text-sm mx-3 font-semibold text-slate-600">Filter by Category</span>
               <Select
+
+                value={category}
+                onChange={selectedOption => setCategory(selectedOption)}
                 options={categoryOptions}
                 styles={style}
                 theme={theme}
@@ -144,75 +149,84 @@ const Home = () => {
           </div>
 
 
-          <Tab.Panels as="div" className="border ">
-            <Tab.Panel
-              key="latest"
-              className=""
-            >
-              <div className=" flex flex-col overflow-y-auto ">
-                {data && data.sort((x, y) => x.created - y.created).reverse().map(post => {
-                  return <Post
-                    setShowLoginPopup={setShowLoginPopup}
-                    key={post.id}
-                    postId={post.id}
-                    post={post}
-                  />
+          <Tab.Panels as="div" className="border border-slate-100 rounded-xl ">
 
-                })}
+            <Tab.Panel key="latest">
+              <div className=" flex flex-col overflow-y-auto ">
+                {
+                  data && data.filter(item => {
+                    if (category.value === "all") {
+                      return item
+                    } else if (item.category === category.value) {
+                      return item
+                    }
+                  }).sort((a, b) => a.created - b.created)
+                    .map(post => {
+                      return <Post
+                        setShowLoginPopup={setShowLoginPopup}
+                        key={post.id}
+                        postId={post.id}
+                        post={post}
+                      />
+
+                    })
+                }
 
               </div>
             </Tab.Panel>
 
-            <Tab.Panel
-              key="mostLiked"
-              className=""
-            >
+
+            <Tab.Panel key="mostLiked">
               <div className=" flex flex-col overflow-y-auto ">
-                {data && data.sort((x, y) => x.likedByUsers.length - y.likedByUsers.length).reverse().map(post => {
-                  return <Post
-                    setShowLoginPopup={setShowLoginPopup}
-                    key={post.id}
-                    postId={post.id}
-                    post={post}
-                  />
+                {
+                  data && data.filter(item => {
+                    if (category.value === "all") {
+                      return item
+                    } else if (item.category === category.value) {
+                      return item
+                    }
+                  }).sort((x, y) => x.likedByUsers.length - y.likedByUsers.length).reverse().map(post => {
+                    return <Post
+                      setShowLoginPopup={setShowLoginPopup}
+                      key={post.id}
+                      postId={post.id}
+                      post={post}
+                    />
 
-                })}
-
-              </div>
-            </Tab.Panel>
-            <Tab.Panel
-              key="mostSupported"
-              className=""
-            >
-              <div className=" flex flex-col overflow-y-auto ">
-                {data && data.sort((x, y) => x.supportedByUsers.length - y.supportedByUsers.length).reverse().map(post => {
-                  return <Post
-                    setShowLoginPopup={setShowLoginPopup}
-                    key={post.id}
-                    postId={post.id}
-                    post={post}
-                  />
-
-                })}
+                  })
+                }
 
               </div>
             </Tab.Panel>
 
+
+            <Tab.Panel key="mostSupported">
+              <div className=" flex flex-col overflow-y-auto ">
+                {
+                  data && data.filter(item => {
+                    if (category.value === "all") {
+                      return item
+                    } else if (item.category === category.value) {
+                      return item
+                    }
+                  }).sort((x, y) => x.supportedByUsers.length - y.supportedByUsers.length).reverse().map(post => {
+                    return <Post
+                      setShowLoginPopup={setShowLoginPopup}
+                      key={post.id}
+                      postId={post.id}
+                      post={post}
+                    />
+
+                  })
+                }
+
+              </div>
+            </Tab.Panel>
 
 
           </Tab.Panels>
 
-
-
         </Tab.Group>
-
-
-
-
-
-
-
-
 
 
 
