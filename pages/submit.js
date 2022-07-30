@@ -28,7 +28,7 @@ const Submit = () => {
         e.preventDefault();
 
         try {
-            const body = { title, category: category.value };
+            const body = { title:title, category: category.value };
 
             await fetch('/api/post', {
                 method: 'POST',
