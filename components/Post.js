@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react'
 import { formatDistanceToNow } from 'date-fns'
 
-const Post = ({ setIsOpen, post, postId }) => {
+const Post = ({ setShowLoginPopup, post, postId }) => {
     const [data, setData] = useState(post)
-    const { data: session, status} = useSession()
-
+    const { data: session, status } = useSession()
     const { authorId, title, category, userName, created, likedByUsers, supportedByUsers } = data
 
     const isLiked = likedByUsers.some(el => el.id == session?.userId);
@@ -15,7 +14,8 @@ const Post = ({ setIsOpen, post, postId }) => {
 
     const handlePostReactions = async (reaction) => {
         if (!session) {
-            setIsOpen(true)
+            setShowLoginPopup(true)
+            return;
         }
 
         try {
