@@ -12,7 +12,7 @@ const UserProfile = () => {
 
     const { data, error } = useSWR(`/api/user/${userId}`, fetcher)
     if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
-    if (!data) return <div className="mx-auto text-center text-2xl p-20">Preparing kitchen...</div>
+    if (!data) return <div className="mx-auto text-center text-2xl p-20">Baking ideas for you</div>
 
     console.log(data)
 

@@ -34,8 +34,7 @@ const Home = () => {
       <Head>
         <title>Half baked ideas</title>
         <link rel="icon" href="/favicon.webp" />
-        <title>half baked ideas</title>
-        <meta name="description" content="The kitchen of your half baked ideas" />
+        <meta name="description" content="The open kitchen for your half baked ideas" />
 
       </Head>
 
@@ -50,7 +49,7 @@ const Home = () => {
 
         <Tab.Group >
 
-          <div className="md:1/4  flex flex-col md:sticky top-14 mx-4 h-max">
+          <div className="md:1/4  flex flex-col justify-center md:sticky top-14 mx-4 h-max">
 
 
             {session ?
@@ -64,7 +63,7 @@ const Home = () => {
               :
               <div></div>
             }
-            <span className="text-sm w-40  mx-3 font-semibold text-slate-600">Sort by</span>
+            <span className="text-sm w-60 mx-auto text-left px-3 font-semibold text-slate-600">Sort by</span>
 
             <Tab.List as="div" className="flex my-1 flex-col w-60 mx-auto">
 
@@ -77,7 +76,7 @@ const Home = () => {
                 🙋 I would use this
               </Tab>
 
-              <Tab as="button" key="mostSupported" className="text-slate-600 font-semibold font-Inter focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 rounded-lg text-md bg-white">
+              <Tab as="button" key="mostSupported" className="text-slate-600 font-semibold  focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 rounded-lg text-md bg-white">
                 💸 Take my money
               </Tab>
 
@@ -93,7 +92,7 @@ const Home = () => {
                 styles={style}
                 theme={theme}
                 instanceId='filter'
-                className=" font-semibold capitalize outline-none rounded-lg text-md mx-1 border-none my-2"
+                className=" font-semibold text-slate-700 capitalize outline-none rounded-lg text-md mx-1 border-none my-2"
               />
             </div>
 

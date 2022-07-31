@@ -11,7 +11,7 @@ const Header = () => {
 
         <div className=" md:px-52 p-2 flex items-center bg-white top-0 sticky z-10">
             <Link href="/" >
-                <h1 className="hover:text-pink-300 cursor-pointer md:text-lg font-Notosans text-slate-800 ">💡 half baked ideas</h1>
+                <h1 className="hover:text-pink-300 cursor-pointer md:text-lg font-semibold text-slate-700 ">💡 half baked ideas</h1>
             </Link>
 
 
