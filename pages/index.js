@@ -34,7 +34,9 @@ const Home = () => {
       <Head>
         <title>Half baked ideas</title>
         <link rel="icon" href="/favicon.webp" />
-        <meta name="description" content="The open kitchen for your half baked ideas" />
+        <meta name="description" content="Internet's best half baked app ideas at one place" />
+                        <meta property="og:image" content="https://user-images.githubusercontent.com/47467468/182023140-4eb3ddf2-11d6-4ccb-9cdb-ca05fd32af64.png" />
+
         <script defer type="text/javascript" src="https://api.pirsch.io/pirsch.js"
           id="pirschjs"
           data-code="ctWYY9beTG1rw55YS1GG27gjLgy8pdfO"></script>
