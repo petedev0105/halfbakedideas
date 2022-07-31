@@ -14,7 +14,7 @@ const UserProfile = () => {
     if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
     if (!data) return <div className="mx-auto text-center text-2xl p-20">Baking ideas for you</div>
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <div>

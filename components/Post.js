@@ -29,7 +29,7 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
             });
             const newData = await updatedPost.json()
 
-            console.log(newData, 'post updated success')
+            // console.log(newData, 'post updated success')
             setData(newData)
 
 

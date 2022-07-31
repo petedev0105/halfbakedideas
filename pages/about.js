@@ -10,7 +10,7 @@ const About = () => {
 
     return (
         <div>
-            <div className="font-Notosans md:w-6/12 mx-auto p-2  md:p-10">
+            <div className="font-Notosans border  md:w-6/12 mx-auto p-2  md:p-10">
 
                 <div className="flex items-center">
                     <h1 className="text-2xl my-2 font-semibold text-slate-700">About </h1>

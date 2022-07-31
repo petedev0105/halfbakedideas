@@ -25,7 +25,7 @@ const Home = () => {
   if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
   if (!data) return <div className="mx-auto text-center text-2xl p-20">baking ideas for you...</div>
 
-  console.log(data)
+  // console.log(data)
 
 
 
@@ -35,7 +35,9 @@ const Home = () => {
         <title>Half baked ideas</title>
         <link rel="icon" href="/favicon.webp" />
         <meta name="description" content="The open kitchen for your half baked ideas" />
-
+        <script defer type="text/javascript" src="https://api.pirsch.io/pirsch.js"
+          id="pirschjs"
+          data-code="ctWYY9beTG1rw55YS1GG27gjLgy8pdfO"></script>
       </Head>
 
 
