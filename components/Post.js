@@ -42,7 +42,7 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
     return (
         <div>
 
-            <div className={` bg-white flex items-center shadow-sm m-2 rounded-lg shadow-gray-100  p-4`}>
+            <div className={`font-Notosans bg-white flex items-center shadow-sm m-2 rounded-lg shadow-gray-100  p-4`}>
                 <div className="flex flex-col mx-2 md:w-8/12" >
                     <h2 className=" md:text-lg text-md font-medium text-slate-800">{title}</h2>
                     <div className="flex flex-wrap md:text-sm text-xs mt-2 text-gray-500 ">
@@ -74,7 +74,7 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
                             </div>
                             <div className={`${isLiked ? 'border-pink-200 text-pink-400 border' : 'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20 h-20 items-center shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
                                 <span className=" md:text-3xl text-2xl">🙋</span>
-                                <span className=" font-semibold">{likedByUsers.length}</span>
+                                <span className=" text-lg text-slate-700 font-semibold">{likedByUsers.length}</span>
 
                             </div>
                         </div>
@@ -95,7 +95,7 @@ const Post = ({ setShowLoginPopup, post, postId }) => {
                             </div>
                             <div className={`${isSupported ? 'border-pink-200 text-pink-400 border' : 'bg-white'} flex cursor-pointer m-2 transform duration-200 w-20  shadow-sm shadow-gray-50 border border-gray-50 p-2 rounded-lg hover:-rotate-6 hover:scale-105 flex-col text-center`}>
                                 <span className=" md:text-3xl text-2xl">💸</span>
-                                <span className="font-semibold">{supportedByUsers.length}</span>
+                                <span className="font-semibold  text-lg text-slate-700 ">{supportedByUsers.length}</span>
                             </div>
 
                         </div>

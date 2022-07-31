@@ -9,9 +9,9 @@ const Header = () => {
     const { data: session, status } = useSession();
     return (
 
-        <div className="md:px-52 p-2 flex items-center bg-white top-0 sticky z-10">
+        <div className=" md:px-52 p-2 flex items-center bg-white top-0 sticky z-10">
             <Link href="/" >
-                <h1 className="hover:text-pink-300 cursor-pointer md:text-xl text-md font-semibold">💡 half baked ideas</h1>
+                <h1 className="hover:text-pink-300 cursor-pointer md:text-lg font-Notosans text-slate-800 ">💡 half baked ideas</h1>
             </Link>
 
 
@@ -35,7 +35,7 @@ const Header = () => {
                 ) : (
                     <button
                         onClick={() => signIn('google')}
-                        className="text-md text-white bg-pink-300 hover:bg-pink-400 px-4 font-semibold p-2 rounded-lg">
+                        className=" text-white font-semibold bg-pink-300 hover:bg-pink-400 px-4 p-2 rounded-lg">
                         Submit your idea
                     </button>
                 )}
