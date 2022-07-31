@@ -4,6 +4,7 @@ import { formatDistanceToNow } from 'date-fns'
 import Link from 'next/link';
 
 const Post = ({ setShowLoginPopup, post, postId }) => {
+   
     const [data, setData] = useState(post)
     const { data: session, status } = useSession()
     const { authorId, title, category, userName, created, likedByUsers, supportedByUsers } = data

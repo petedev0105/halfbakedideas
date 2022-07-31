@@ -1,10 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Post from '../../components/Post'
 import Link from 'next/link';
+import { useSession } from 'next-auth/react'
+import LoginPopup from '../../components/LoginPopup';
+
 const UserProfile = () => {
+    const { data: session, status } = useSession()
+    const [showLoginPopup, setShowLoginPopup] = useState(false)
+
 
     const router = useRouter()
     const { userId } = router.query
@@ -18,6 +24,11 @@ const UserProfile = () => {
 
     return (
         <div>
+             <LoginPopup
+                showLoginPopup={showLoginPopup}
+                setShowLoginPopup={setShowLoginPopup}
+            />
+
 
             <div>
                 <div className="w-8/12 mx-auto">
@@ -43,7 +54,9 @@ const UserProfile = () => {
                                     <Post
                                         key={post.id}
                                         postId={post.id}
-                                        post={post} />
+                                        post={post}
+                                        setShowLoginPopup={setShowLoginPopup}
+                                    />
                                 )
                             })
                         }

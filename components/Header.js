@@ -36,7 +36,7 @@ const Header = () => {
                     <button
                         onClick={() => signIn('google')}
                         className=" text-white font-semibold bg-pink-300 hover:bg-pink-400 px-4 p-2 rounded-lg">
-                        Submit your idea
+                        Signup
                     </button>
                 )}
 

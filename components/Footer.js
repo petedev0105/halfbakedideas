@@ -4,14 +4,14 @@ import hashnodeLogo from "../assets/images/hashnode.webp"
 import planetScaleLogo from "../assets/images/planetscale.webp"
 import Link from "next/link";
 
-const Footer = () => {
+const Footer = ({style}) => {
     return (
-        <div>
+        <div className={`${style}`}>
 
 
-            <Link href="/about" >
+            {/* <Link href="/about" >
                 <span className="mx-2 font-semibold text-slate-700 hover:text-pink-400 cursor-pointer">🤔 How it works?</span>
-            </Link>
+            </Link> */}
             <div className="flex items-center mt-4 ">
 
 

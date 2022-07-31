@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -9,7 +9,8 @@ module.exports = {
       fontFamily: {
         Inter: ['Inter', 'sans-serif'],
         Outfit: ['Outfit', 'sans-serif'],
-        Notosans: ['Noto sans', 'sans-serif']
+        Notosans: ['Noto sans', 'sans-serif'],
+        Anek: ['Anek Latin']
 
 
       },

@@ -1,195 +1,97 @@
 import Head from 'next/head'
 import React, { Fragment, useState, useEffect } from 'react'
-import Post from '../components/Post'
-import Link from "next/link";
-import Select from 'react-select'
-import { categoryOptions, style, theme } from '../utils/utils'
 import { useSession, signIn } from 'next-auth/react'
-import LoginPopup from '../components/LoginPopup'
-import useSWR from 'swr'
+import Conversation from '../components/Conversation'
+import hero from '../assets/images/hero.webp'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
-
-import { Tab } from '@headlessui/react'
-
 
 const Home = () => {
 
+  const router = useRouter()
   const { data: session, status } = useSession()
-  const [showLoginPopup, setShowLoginPopup] = useState(false)
-  const [category, setCategory] = useState({ label: "all", value: "all" })
 
 
-  const fetcher = (...args) => fetch(...args).then(res => res.json())
-
-  const { data, error } = useSWR('/api/posts', fetcher)
-  if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
-  if (!data) return <div className="mx-auto text-center text-2xl p-20">baking ideas for you...</div>
-
-  // console.log(data)
-
-
+  useEffect(() => {
+    if (session) {
+      router.push('/feed')
+    }
+  }, [session])
 
   return (
-    <div className="">
+    <div className="bg-slate-50">
+
       <Head>
         <title>Half baked ideas</title>
         <link rel="icon" href="/favicon.webp" />
         <meta name="description" content="Internet's best half baked app ideas at one place" />
-                        <meta property="og:image" content="https://user-images.githubusercontent.com/47467468/182023140-4eb3ddf2-11d6-4ccb-9cdb-ca05fd32af64.png" />
+        <meta property="og:image" content="https://user-images.githubusercontent.com/47467468/182023140-4eb3ddf2-11d6-4ccb-9cdb-ca05fd32af64.png" />
 
         <script defer type="text/javascript" src="https://api.pirsch.io/pirsch.js"
           id="pirschjs"
           data-code="ctWYY9beTG1rw55YS1GG27gjLgy8pdfO"></script>
       </Head>
 
-
-      <LoginPopup
-        showLoginPopup={showLoginPopup}
-        setShowLoginPopup={setShowLoginPopup}
-      />
-
-      <div className="m-4 flex md:flex-row flex-col mx-auto md:w-9/12 ">
+      <div className="  mx-auto ">
+        <div className=" flex flex-col justify-center mx-auto my-10 md:my-20">
+          <h1 className="md:w-1/3 mx-auto md:text-4xl text-2xl px-8 md:px-0 text-center font-Notosans font-bold text-slate-700">
+            Internet's best half-baked app ideas at one place
+          </h1>
 
 
-        <Tab.Group >
 
-          <div className="md:1/4  flex flex-col justify-center md:sticky top-14 mx-4 h-max">
-
-
-            {session ?
-              <div>
-                <Link href="/submit">
-                  <button className="text-md px-8 flex my-4 items-center mx-auto shadow-sm shadow-green-100  font-semibold  text-white  p-2 rounded-lg bg-pink-300 hover:bg-pink-400 hover:scale-105 duration-300">
-                    <svg className="w-6 h-6 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg> Sumbit your Idea
-                  </button>
-                </Link>
-              </div>
-              :
-              <div></div>
-            }
-            <span className="text-sm w-60 mx-auto text-left px-3 font-semibold text-slate-600">Sort by</span>
-
-            <Tab.List as="div" className="flex my-1 flex-col w-60 mx-auto">
-
-
-              <Tab as="button" key="latest" className="font-semibold text-slate-700 focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 rounded-lg  bg-white">
-                ✨ Latest
-              </Tab>
-
-              <Tab key="mostLiked" className="focus:text-pink-400 font-semibold text-slate-700 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2  rounded-lg text-md bg-white">
-                🙋 I would use this
-              </Tab>
-
-              <Tab as="button" key="mostSupported" className="text-slate-600 font-semibold  focus:text-pink-400 focus:outline-none text-left border shadow-sm shadow-gray-100 border-gray-50 m-1 p-2 rounded-lg text-md bg-white">
-                💸 Take my money
-              </Tab>
-
-            </Tab.List>
-
-            <div className="my-4 w-60 mx-auto">
-              <span className="text-sm mx-3 font-semibold text-slate-600">Filter by Category</span>
-              <Select
-
-                value={category}
-                onChange={selectedOption => setCategory(selectedOption)}
-                options={categoryOptions}
-                styles={style}
-                theme={theme}
-                instanceId='filter'
-                className=" font-semibold text-slate-700 capitalize outline-none rounded-lg text-md mx-1 border-none my-2"
-              />
-            </div>
-
-            <Footer />
+          <div className="mx-auto ">
+            <Image src={hero} />
 
           </div>
 
+        </div>
 
-          <Tab.Panels as="div" className="border-l border-slate-100 rounded-xl ">
 
-            <Tab.Panel key="latest">
-              <div className=" flex flex-col overflow-y-auto ">
-                {
-                  data && data.filter(item => {
-                    if (category.value === "all") {
-                      return item
-                    } else if (item.category === category.value) {
-                      return item
-                    }
-                  }).sort((a, b) => a.created - b.created)
-                    .map(post => {
-                      return <Post
-                        setShowLoginPopup={setShowLoginPopup}
-                        key={post.id}
-                        postId={post.id}
-                        post={post}
-                      />
+        <div className="md:w-9/12 mx-auto md:my-10 p-4">
+          <Conversation />
 
-                    })
-                }
+          <p className="md:text-3xl text-2xl font-bold text-center">Vote for your favorite ideas</p>
+          <p className="text-xl text-center">This helps the makers to validate these ideas before building.</p>
+          <div className="flex md:flex-row  py-10 justify-center flex-col ">
 
+            <div className="flex m-4 hover:scale-105 bg-white duration-300 hover:rotate-3 cursor-pointer md:w-4/12 p-2 border border-slate-100 rounded-lg items-center md:my-2 ">
+              <div className="bg-white flex flex-col justify-center text-center w-24 h-24 p-4 rounded-lg  ">
+                <span className=" md:text-5xl text-2xl">🙋</span>
+                <span className=" text-lg text-slate-700 font-semibold">74</span>
               </div>
-            </Tab.Panel>
+              <h1 className="text-xl font-semibold w-1/2 ml-4">I would use this Product </h1>
+            </div>
 
-
-            <Tab.Panel key="mostLiked">
-              <div className=" flex flex-col overflow-y-auto ">
-                {
-                  data && data.filter(item => {
-                    if (category.value === "all") {
-                      return item
-                    } else if (item.category === category.value) {
-                      return item
-                    }
-                  }).sort((x, y) => x.likedByUsers.length - y.likedByUsers.length).reverse().map(post => {
-                    return <Post
-                      setShowLoginPopup={setShowLoginPopup}
-                      key={post.id}
-                      postId={post.id}
-                      post={post}
-                    />
-
-                  })
-                }
-
+            <div className="flex p-2 border hover:scale-105 duration-300 hover:rotate-3 cursor-pointer bg-white border-slate-100 rounded-lg m-4 items-center md:my-2 md:w-4/12">
+              <div className="bg-white flex flex-col justify-center  text-center w-24 h-24 p-4 rounded-lg  ">
+                <span className=" md:text-5xl text-2xl">💸</span>
+                <span className=" text-lg text-slate-700 font-semibold">86</span>
               </div>
-            </Tab.Panel>
+              <h1 className="text-xl font-semibold ml-4 w-1/2">I would pay for this Product</h1>
+            </div>
 
 
-            <Tab.Panel key="mostSupported">
-              <div className=" flex flex-col overflow-y-auto ">
-                {
-                  data && data.filter(item => {
-                    if (category.value === "all") {
-                      return item
-                    } else if (item.category === category.value) {
-                      return item
-                    }
-                  }).sort((x, y) => x.supportedByUsers.length - y.supportedByUsers.length).reverse().map(post => {
-                    return <Post
-                      setShowLoginPopup={setShowLoginPopup}
-                      key={post.id}
-                      postId={post.id}
-                      post={post}
-                    />
 
-                  })
-                }
+          </div>
 
-              </div>
-            </Tab.Panel>
+        </div>
+
+        <div className="md:w-8/12 p-10 flex items-center mx-auto border-t-2 border-slate-100">
+
+          <Footer style={"flex md:flex-row flex-col justify-center items-center mx-auto"} />
 
 
-          </Tab.Panels>
 
-        </Tab.Group>
+        </div>
 
 
       </div>
-
     </div>
-
   )
+
+
 }
 
 export default Home
