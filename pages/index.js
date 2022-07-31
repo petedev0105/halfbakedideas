@@ -22,8 +22,8 @@ const Home = () => {
   const fetcher = (...args) => fetch(...args).then(res => res.json())
 
   const { data, error } = useSWR('/api/posts', fetcher)
-  if (error) return <div>An error occured.</div>
-  if (!data) return <div>Loading ...</div>
+  if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
+  if (!data) return <div className="mx-auto text-center text-2xl p-20">baking ideas for you...</div>
 
   console.log(data)
 

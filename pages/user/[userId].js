@@ -11,8 +11,8 @@ const UserProfile = () => {
     const fetcher = (...args) => fetch(...args).then(res => res.json())
 
     const { data, error } = useSWR(`/api/user/${userId}`, fetcher)
-    if (error) return <div>An error occured.</div>
-    if (!data) return <div>Loading ...</div>
+    if (error) return <div className="mx-auto text-center text-2xl p-20">An error occured.</div>
+    if (!data) return <div className="mx-auto text-center text-2xl p-20">Preparing kitchen...</div>
 
     console.log(data)
 
