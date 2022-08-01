@@ -9,18 +9,20 @@ import Select from 'react-select'
 import { useSession } from 'next-auth/react'
 import { Tab } from '@headlessui/react'
 import { useRouter } from 'next/router'
+import LoginPopup from '../components/LoginPopup'
 
 const Feed = () => {
     const router = useRouter()
 
     const { data: session, status } = useSession()
     const [category, setCategory] = useState({ label: "all", value: "all" })
+    const [showLoginPopup, setShowLoginPopup] = useState(false)
 
-    useEffect(() => {
-        if (!session) {
-            router.push('/')
-        }
-    }, [session])
+    // useEffect(() => {
+    //     if (!session) {
+    //         router.push('/')
+    //     }
+    // }, [session])
 
 
     const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -43,7 +45,10 @@ const Feed = () => {
                 <meta property="og:image" content="https://user-images.githubusercontent.com/47467468/182023140-4eb3ddf2-11d6-4ccb-9cdb-ca05fd32af64.png" />
             </Head>
 
-
+            <LoginPopup
+                showLoginPopup={showLoginPopup}
+                setShowLoginPopup={setShowLoginPopup}
+            />
 
             <div className="m-4 flex md:flex-row flex-col mx-auto md:w-9/12 ">
 
@@ -119,6 +124,7 @@ const Feed = () => {
                                                 key={post.id}
                                                 postId={post.id}
                                                 post={post}
+                                                setShowLoginPopup={setShowLoginPopup}
                                             />
 
                                         })
@@ -142,6 +148,8 @@ const Feed = () => {
                                             key={post.id}
                                             postId={post.id}
                                             post={post}
+                                            setShowLoginPopup={setShowLoginPopup}
+
                                         />
 
                                     })
@@ -165,6 +173,8 @@ const Feed = () => {
                                             key={post.id}
                                             postId={post.id}
                                             post={post}
+                                            setShowLoginPopup={setShowLoginPopup}
+
                                         />
 
                                     })

@@ -6,6 +6,7 @@ import hero from '../assets/images/hero.webp'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
+import Link from "next/link";
 
 const Home = () => {
 
@@ -38,6 +39,8 @@ const Home = () => {
           <h1 className="md:w-1/3 mx-auto md:text-4xl text-2xl px-8 md:px-0 text-center font-Notosans font-bold text-slate-700">
             Internet's best half-baked app ideas at one place
           </h1>
+          
+          <Link href="/feed" ><span className=" w-40 mx-auto text-white text-center font-semibold text-xl p-2 bg-slate-700 hover:bg-slate-800 rounded-lg px-4 my-2 cursor-pointer">Show me &rarr;</span></Link>
 
 
 
@@ -45,6 +48,7 @@ const Home = () => {
             <Image src={hero} />
 
           </div>
+
 
         </div>
 

@@ -33,11 +33,15 @@ const Header = () => {
                         </button>
                     </div>
                 ) : (
-                    <button
-                        onClick={() => signIn('google')}
-                        className=" text-white font-semibold bg-pink-300 hover:bg-pink-400 px-4 p-2 rounded-lg">
-                        Signup
-                    </button>
+                    <div className="flex items-center">
+                        <Link href="/feed"><span className="md:text-lg text-sm font-Notosans mx-6 cursor-pointer hover:text-pink-400">Ideas feed</span></Link>
+                        <button
+                            onClick={() => signIn('google')}
+                            className=" text-white font-semibold md:text-md text-sm bg-pink-300 hover:bg-pink-400 px-4 p-2 rounded-lg">
+                            Share your idea
+                        </button>
+                    </div>
+
                 )}
 
             </div>
