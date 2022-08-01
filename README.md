@@ -1,23 +1,42 @@
-# Next.js + Tailwind CSS Example
+# 💡 Half baked ideas
+Curating Internet's best half-baked app ideas at one place
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Half baked ideas is an open platform to share your "what if there was an app that could" ideas. You can submit and vote for your favorite ideas. Have an idea? Share it or check out some cool app ideas crowdsourced by the internet.
 
-## Deploy your own
+<img src="https://user-images.githubusercontent.com/47467468/182023140-4eb3ddf2-11d6-4ccb-9cdb-ca05fd32af64.png" height="auto" width="800px"  margin="20px">
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Demo : [halfbakedideas.vercel.app](https://halfbakedideas.vercel.app)
+Blog : [I built an app to crowdsource internet's best side project ideas](https://blog.rutikwankhade.dev/i-built-an-app-to-crowdsource-internets-best-side-project-ideas)
 
-## How to use
+## Built with
+- NextJs
+- TailwindCSS
+- PlanetScale
+- Prisma
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+This project was built in [#PlanetScaleHackathon](https://townhall.hashnode.com/planetscale-hackathon) organized by hashnode x PlanetScale.
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+<p>
+<img src="https://user-images.githubusercontent.com/47467468/182130857-6e36ebcd-e7fb-4de7-859a-0e568e0970d2.png" height="auto"   margin="20px">
+<span>+</span>
+
+<img src="https://user-images.githubusercontent.com/47467468/182130863-f9f727c2-42f2-4929-8655-dec9ba9f18ce.jpg" height="auto"   margin="20px" >
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
