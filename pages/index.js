@@ -76,6 +76,14 @@ const Home = () => {
 
           </div>
 
+          <div className="flex flex-col justify-center text-center md:w-8/12 mx-auto">
+            <span>Read full story on</span>
+            <a href="https://blog.rutikwankhade.dev/i-built-an-app-to-crowdsource-internets-best-side-project-ideas"
+              target="_blank" rel="noreferrer"
+              className="bg-white text-xl p-2 shadow shadow-slate-100 hover:text-pink-400 rounded-full px-6"
+            >How I built an app to crowdsource internet's best side project ideas</a>
+          </div>
+
         </div>
 
         <div className="md:w-8/12 p-10 flex items-center mx-auto border-t-2 border-slate-100">
